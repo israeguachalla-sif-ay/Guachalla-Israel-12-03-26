@@ -32,10 +32,6 @@ body {
     padding: 2rem;
 }
 
-#content {
-    padding: 2rem;
-}
-
 /* Media Queries */
 
 /* Extra small (<576px) */
@@ -46,9 +42,6 @@ body {
     }
     #sidebar {
         display: none;
-    }
-    #content {
-        margin-left: 0;
     }
 }
 
@@ -61,9 +54,6 @@ body {
     #sidebar {
         width: 200px;
     }
-    #content {
-        margin-left: 200px;
-    }
 }
 
 /* Medium (≥768px y <992px) */
@@ -74,9 +64,6 @@ body {
     }
     #sidebar {
         width: 220px;
-    }
-    #content {
-        margin-left: 220px;
     }
 }
 
@@ -89,9 +76,6 @@ body {
     #sidebar {
         width: 250px;
     }
-    #content {
-        margin-left: 250px;
-    }
 }
 
 /* Extra large (≥1200px) */
@@ -102,8 +86,5 @@ body {
     }
     #sidebar {
         width: 280px;
-    }
-    #content {
-        margin-left: 280px;
     }
 }
