@@ -11,6 +11,7 @@ body {
     min-height: 100vh;
     background-color: #f8f9fa;
     border-right: 1px solid #dee2e6;
+    overflow: visible;
 }
 
 .section-btn {
@@ -49,18 +50,35 @@ main {
     display: none;
 }
 
-#tab1:checked ~ nav ~ main #content-display #section1,
-#tab2:checked ~ nav ~ main #content-display #section2,
-#tab3:checked ~ nav ~ main #content-display #section3 {
-    display: block;
+.sidebar-grid {
+    position: relative;
+    padding: 1rem;
 }
 
-#tab1:checked ~ nav ~ main #content-display #section1,
-#tab2:checked ~ nav ~ main #content-display #section2,
-#tab3:checked ~ nav ~ main #content-display #section3 {
+.sidebar-grid label {
     display: block;
+    margin-bottom: 1rem;
 }
 
+.big-display {
+    position: absolute;
+    right: -180px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+}
+.big-display .display-1 {
+    display: none;
+}
+
+#tab1:checked ~ .big-display #show1,
+#tab2:checked ~ .big-display #show2,
+#tab3:checked ~ .big-display #show3 {
+    display: block;
+}
 /* Media Queries */
 
 /* Extra small (<576px) */
