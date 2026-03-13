@@ -16,6 +16,22 @@ body {
     width: 250px; /* Default para large */
 }
 
+.sidebar-content {
+    display: flex;
+    min-height: 100vh;
+}
+
+.letters {
+    flex: 0 0 80px;
+    padding: 1rem;
+    border-right: 1px solid #dee2e6;
+}
+
+.text-content {
+    flex: 1;
+    padding: 2rem;
+}
+
 #content {
     padding: 2rem;
 }
