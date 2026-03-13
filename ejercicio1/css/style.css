@@ -52,11 +52,9 @@ main {
     display: none;
 }
 
-#section1 {
-    display: block;
-}
-
-#section1:target, #section2:target, #section3:target {
+#tab1:checked ~ nav ~ main #content-display #section1,
+#tab2:checked ~ nav ~ main #content-display #section2,
+#tab3:checked ~ nav ~ main #content-display #section3 {
     display: block;
 }
 
