@@ -18,6 +18,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const backupBtn = document.getElementById('backupBtn');
     const deleteBtn = document.getElementById('deleteBtn');
 
+    // Sidebar navigation
+    const sidebarLinks = document.querySelectorAll('#sidebar .nav-link');
+    const contentSections = document.querySelectorAll('.content-section');
+    const mainTitle = document.getElementById('main-title');
+
+    // Section titles
+    const sectionTitles = {
+        '1': 'Sección 1 - Dashboard',
+        '2': 'Sección 2 - Análisis',
+        '3': 'Sección 3 - Configuración'
+    };
+
+    // Sidebar navigation handler
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Remove active class from all links
+            sidebarLinks.forEach(l => l.classList.remove('active'));
+            // Add active class to clicked link
+            this.classList.add('active');
+
+            // Get section number
+            const sectionId = this.getAttribute('data-section');
+
+            // Hide all sections
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(`section-${sectionId}`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update main title
+            mainTitle.textContent = sectionTitles[sectionId] || 'Dashboard Administrativo';
+        });
+    });
+
     // Validation function
     function validateField(field, condition) {
         field.classList.toggle('is-valid', condition);
