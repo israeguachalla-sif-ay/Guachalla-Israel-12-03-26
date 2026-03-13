@@ -48,6 +48,18 @@ main {
     transition: all 0.3s ease;
 }
 
+.display-1 {
+    display: none;
+}
+
+#section1 {
+    display: block;
+}
+
+#section1:target, #section2:target, #section3:target {
+    display: block;
+}
+
 /* Media Queries */
 
 /* Extra small (<576px) */
