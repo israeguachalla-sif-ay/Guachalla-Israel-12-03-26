@@ -1,16 +1,15 @@
-/* Custom Styles for Dashboard */
+/* Dashboard Styles */
 
-/* Base Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
 }
 
-/* Sidebar Styles */
+/* Sidebar */
 .sidebar {
     min-height: 100vh;
     position: fixed;
-    top: 56px; /* Height of navbar */
+    top: 56px;
     left: 0;
     width: 250px;
     z-index: 1000;
@@ -42,8 +41,8 @@ body {
 
 /* Main Content */
 main {
-    margin-top: 56px; /* Height of navbar */
-    padding-left: 250px; /* Width of sidebar */
+    margin-top: 56px;
+    padding-left: 250px;
 }
 
 /* Cards */
@@ -79,198 +78,6 @@ main {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Navbar */
-.navbar-brand {
-    font-weight: bold;
-}
-
-/* Responsive Breakpoints */
-
-/* Extra Small Devices (phones, <576px) */
-@media (max-width: 575.98px) {
-    body {
-        font-size: 14px;
-        background-color: #ffffff;
-    }
-
-    .sidebar {
-        display: none !important; /* Hide sidebar on mobile */
-    }
-
-    main {
-        padding-left: 0 !important;
-        margin-top: 76px; /* Account for collapsed navbar */
-    }
-
-    .navbar-brand {
-        font-size: 1.1rem;
-    }
-
-    .display-4 {
-        font-size: 2rem;
-    }
-
-    .card-title {
-        font-size: 1.1rem;
-    }
-
-    .btn-lg {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-    }
-}
-
-/* Small Devices (tablets, >=576px) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    body {
-        font-size: 15px;
-        background-color: #f1f3f4;
-    }
-
-    .sidebar {
-        width: 200px;
-    }
-
-    main {
-        padding-left: 200px;
-    }
-
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-
-    .display-4 {
-        font-size: 2.5rem;
-    }
-
-    .card-title {
-        font-size: 1.2rem;
-    }
-
-    .btn-lg {
-        padding: 0.6rem 1.2rem;
-        font-size: 1.1rem;
-    }
-}
-
-/* Medium Devices (desktops, >=768px) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    body {
-        font-size: 16px;
-        background-color: #f8f9fa;
-    }
-
-    .sidebar {
-        width: 220px;
-    }
-
-    main {
-        padding-left: 220px;
-    }
-
-    .navbar-brand {
-        font-size: 1.3rem;
-    }
-
-    .display-4 {
-        font-size: 3rem;
-    }
-
-    .card-title {
-        font-size: 1.3rem;
-    }
-
-    .btn-lg {
-        padding: 0.7rem 1.4rem;
-        font-size: 1.2rem;
-    }
-}
-
-/* Large Devices (large desktops, >=992px) */
-@media (min-width: 992px) {
-    body {
-        font-size: 17px;
-        background-color: #f8f9fa;
-    }
-
-    .sidebar {
-        width: 250px;
-    }
-
-    main {
-        padding-left: 250px;
-    }
-
-    .navbar-brand {
-        font-size: 1.4rem;
-    }
-
-    .display-4 {
-        font-size: 3.5rem;
-    }
-
-    .card-title {
-        font-size: 1.4rem;
-    }
-
-    .btn-lg {
-        padding: 0.8rem 1.6rem;
-        font-size: 1.3rem;
-    }
-}
-
-/* Extra Large Devices (>=1200px) */
-@media (min-width: 1200px) {
-    body {
-        font-size: 18px;
-    }
-
-    .sidebar {
-        width: 280px;
-    }
-
-    main {
-        padding-left: 280px;
-    }
-
-    .display-4 {
-        font-size: 4rem;
-    }
-
-    .card-title {
-        font-size: 1.5rem;
-    }
-
-    .btn-lg {
-        padding: 1rem 2rem;
-        font-size: 1.4rem;
-    }
-}
-
-/* Animation for sidebar toggle (if needed for mobile menu) */
-.sidebar.collapsed {
-    transform: translateX(-100%);
-}
-
-/* Custom scrollbar for sidebar */
-.sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-/* Loading states for buttons */
 .btn.loading {
     opacity: 0.6;
     pointer-events: none;
@@ -292,20 +99,123 @@ main {
     to { transform: rotate(360deg); }
 }
 
-/* Focus states */
-.form-control:focus,
-.btn:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+/* Navbar */
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* Responsive Breakpoints */
+
+/* Mobile (<576px) */
+@media (max-width: 575.98px) {
+    body {
+        font-size: 14px;
+        background-color: #ffffff;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    main {
+        padding-left: 0 !important;
+        margin-top: 76px;
+    }
+
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Tablet (≥576px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    body {
+        font-size: 15px;
+        background-color: #f1f3f4;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    main {
+        padding-left: 200px;
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Desktop (≥768px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    body {
+        font-size: 16px;
+    }
+
+    .sidebar {
+        width: 220px;
+    }
+
+    main {
+        padding-left: 220px;
+    }
+
+    .display-4 {
+        font-size: 3rem;
+    }
+}
+
+/* Large Desktop (≥992px) */
+@media (min-width: 992px) {
+    body {
+        font-size: 17px;
+    }
+
+    .sidebar {
+        width: 250px;
+    }
+
+    main {
+        padding-left: 250px;
+    }
+
+    .display-4 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Extra Large (≥1200px) */
+@media (min-width: 1200px) {
+    body {
+        font-size: 18px;
+    }
+
+    .sidebar {
+        width: 280px;
+    }
+
+    main {
+        padding-left: 280px;
+    }
+
+    .display-4 {
+        font-size: 4rem;
+    }
 }
 
 /* Alert styles */
 .alert {
     border-radius: 10px;
     border: none;
-}
-
-/* Table responsive */
-.table-responsive {
-    border-radius: 10px;
-    overflow: hidden;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 300px;
 }

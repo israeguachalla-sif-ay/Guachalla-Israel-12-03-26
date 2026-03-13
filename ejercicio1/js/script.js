@@ -1,8 +1,8 @@
-// Custom JavaScript for Dashboard
+// Dashboard JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Form validation
-    const userForm = document.getElementById('userForm');
+    // Form elements
+    const form = document.getElementById('userForm');
     const firstName = document.getElementById('firstName');
     const lastName = document.getElementById('lastName');
     const email = document.getElementById('email');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPassword = document.getElementById('confirmPassword');
     const terms = document.getElementById('terms');
 
-    // Button elements
+    // Buttons
     const submitBtn = document.getElementById('submitBtn');
     const cancelBtn = document.getElementById('cancelBtn');
     const exportBtn = document.getElementById('exportBtn');
@@ -18,60 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const backupBtn = document.getElementById('backupBtn');
     const deleteBtn = document.getElementById('deleteBtn');
 
-    // Real-time validation
+    // Validation function
     function validateField(field, condition) {
-        if (condition) {
-            field.classList.remove('is-invalid');
-            field.classList.add('is-valid');
-        } else {
-            field.classList.remove('is-valid');
-            field.classList.add('is-invalid');
-        }
+        field.classList.toggle('is-valid', condition);
+        field.classList.toggle('is-invalid', !condition);
     }
 
-    // First Name validation
-    firstName.addEventListener('input', function() {
-        validateField(this, this.value.trim().length >= 2);
-    });
-
-    // Last Name validation
-    lastName.addEventListener('input', function() {
-        validateField(this, this.value.trim().length >= 2);
-    });
-
-    // Email validation
-    email.addEventListener('input', function() {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        validateField(this, emailRegex.test(this.value));
-    });
-
-    // Password validation
-    password.addEventListener('input', function() {
-        validateField(this, this.value.length >= 6);
-    });
-
-    // Confirm Password validation
-    confirmPassword.addEventListener('input', function() {
-        validateField(this, this.value === password.value && this.value.length >= 6);
-    });
-
-    // Terms checkbox validation
-    terms.addEventListener('change', function() {
-        if (this.checked) {
-            this.classList.remove('is-invalid');
-            this.classList.add('is-valid');
-        } else {
-            this.classList.remove('is-valid');
-            this.classList.add('is-invalid');
-        }
-    });
+    // Real-time validation
+    firstName.addEventListener('input', () => validateField(firstName, firstName.value.trim().length >= 2));
+    lastName.addEventListener('input', () => validateField(lastName, lastName.value.trim().length >= 2));
+    email.addEventListener('input', () => validateField(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)));
+    password.addEventListener('input', () => validateField(password, password.value.length >= 6));
+    confirmPassword.addEventListener('input', () => validateField(confirmPassword, confirmPassword.value === password.value && confirmPassword.value.length >= 6));
+    terms.addEventListener('change', () => validateField(terms, terms.checked));
 
     // Form submission
-    userForm.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // Check if all fields are valid
-        const isValid = userForm.checkValidity() &&
+        const isValid = form.checkValidity() &&
                        firstName.classList.contains('is-valid') &&
                        lastName.classList.contains('is-valid') &&
                        email.classList.contains('is-valid') &&
@@ -80,43 +44,34 @@ document.addEventListener('DOMContentLoaded', function() {
                        terms.checked;
 
         if (isValid) {
-            // Simulate form submission
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Registrando...';
+            submitBtn.textContent = 'Registrando...';
 
             setTimeout(() => {
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Usuario Registrado';
-
-                // Show success message
+                submitBtn.textContent = 'Usuario Registrado';
                 showAlert('Usuario registrado exitosamente!', 'success');
-
-                // Reset form
                 setTimeout(() => {
-                    userForm.reset();
-                    submitBtn.innerHTML = 'Registrar Usuario';
-                    // Remove validation classes
-                    const fields = [firstName, lastName, email, password, confirmPassword];
-                    fields.forEach(field => {
+                    form.reset();
+                    submitBtn.textContent = 'Registrar';
+                    [firstName, lastName, email, password, confirmPassword].forEach(field => {
                         field.classList.remove('is-valid', 'is-invalid');
                     });
                     terms.classList.remove('is-valid', 'is-invalid');
                 }, 2000);
             }, 2000);
         } else {
-            showAlert('Por favor, complete todos los campos correctamente.', 'danger');
+            showAlert('Complete todos los campos correctamente.', 'danger');
         }
     });
 
     // Cancel button
     cancelBtn.addEventListener('click', function() {
-        if (confirm('¿Está seguro de que desea cancelar? Se perderán los datos no guardados.')) {
-            userForm.reset();
-            // Remove validation classes
-            const fields = [firstName, lastName, email, password, confirmPassword];
-            fields.forEach(field => {
+        if (confirm('¿Cancelar registro?')) {
+            form.reset();
+            [firstName, lastName, email, password, confirmPassword].forEach(field => {
                 field.classList.remove('is-valid', 'is-invalid');
             });
             terms.classList.remove('is-valid', 'is-invalid');
@@ -124,125 +79,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Action buttons with different states
-    exportBtn.addEventListener('click', function() {
-        this.classList.add('loading');
-        this.disabled = true;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Exportando...';
+    // Action buttons with loading states
+    const actions = [
+        { btn: exportBtn, text: 'Exportando...', msg: 'Datos exportados!', type: 'success' },
+        { btn: importBtn, text: 'Importando...', msg: 'Datos importados!', type: 'info' },
+        { btn: backupBtn, text: 'Creando Backup...', msg: 'Backup creado!', type: 'success' },
+        { btn: deleteBtn, text: 'Eliminando...', msg: 'Datos eliminados!', type: 'danger', confirm: true }
+    ];
 
-        setTimeout(() => {
-            this.classList.remove('loading');
-            this.disabled = false;
-            this.innerHTML = '<i class="fas fa-download"></i> Exportar Datos';
-            showAlert('Datos exportados exitosamente!', 'success');
-        }, 3000);
-    });
+    actions.forEach(action => {
+        action.btn.addEventListener('click', function() {
+            if (action.confirm && !confirm('¿Eliminar todos los datos?')) return;
 
-    importBtn.addEventListener('click', function() {
-        this.classList.add('loading');
-        this.disabled = true;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Importando...';
-
-        setTimeout(() => {
-            this.classList.remove('loading');
-            this.disabled = false;
-            this.innerHTML = '<i class="fas fa-upload"></i> Importar Datos';
-            showAlert('Datos importados exitosamente!', 'info');
-        }, 2500);
-    });
-
-    backupBtn.addEventListener('click', function() {
-        this.classList.add('loading');
-        this.disabled = true;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creando Backup...';
-
-        setTimeout(() => {
-            this.classList.remove('loading');
-            this.disabled = false;
-            this.innerHTML = '<i class="fas fa-save"></i> Crear Backup';
-            showAlert('Backup creado exitosamente!', 'success');
-        }, 4000);
-    });
-
-    deleteBtn.addEventListener('click', function() {
-        if (confirm('¿Está completamente seguro de que desea eliminar todos los datos? Esta acción no se puede deshacer.')) {
             this.classList.add('loading');
             this.disabled = true;
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Eliminando...';
+            this.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${action.text}`;
 
             setTimeout(() => {
                 this.classList.remove('loading');
                 this.disabled = false;
-                this.innerHTML = '<i class="fas fa-trash"></i> Eliminar Datos';
-                showAlert('Datos eliminados permanentemente.', 'danger');
-            }, 3000);
-        }
+                this.innerHTML = this.id.replace('Btn', '').charAt(0).toUpperCase() + this.id.replace('Btn', '').slice(1);
+                showAlert(action.msg, action.type);
+            }, action.btn === deleteBtn ? 3000 : 2500);
+        });
     });
 
     // Alert function
     function showAlert(message, type) {
-        const alertDiv = document.createElement('div');
-        alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-        alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
-        alertDiv.innerHTML = `
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        `;
-
-        document.body.appendChild(alertDiv);
-
-        // Auto remove after 5 seconds
-        setTimeout(() => {
-            if (alertDiv.parentNode) {
-                alertDiv.remove();
-            }
-        }, 5000);
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type} alert-dismissible fade show`;
+        alert.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+        alert.style.cssText = 'position:fixed;top:20px;right:20px;z-index:9999;min-width:300px;';
+        document.body.appendChild(alert);
+        setTimeout(() => alert.remove(), 5000);
     }
 
-    // Sidebar toggle for mobile (if needed)
-    const sidebarToggle = document.querySelector('.navbar-toggler');
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            if (window.innerWidth < 768) {
-                sidebar.classList.toggle('show');
-            }
-        });
-    }
-
-    // Responsive sidebar behavior
+    // Responsive sidebar
     function handleSidebar() {
         const sidebar = document.getElementById('sidebar');
         const main = document.querySelector('main');
+        const isMobile = window.innerWidth < 768;
 
-        if (window.innerWidth < 768) {
-            sidebar.classList.remove('d-md-block');
-            main.style.paddingLeft = '0';
-        } else {
-            sidebar.classList.add('d-md-block');
-            main.style.paddingLeft = '250px';
-        }
+        sidebar.classList.toggle('d-md-block', !isMobile);
+        main.style.paddingLeft = isMobile ? '0' : '250px';
     }
 
-    // Handle window resize
     window.addEventListener('resize', handleSidebar);
-    handleSidebar(); // Initial call
-
-    // Add some interactive effects
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-
-    // Initialize tooltips if Bootstrap tooltips are used
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
+    handleSidebar();
 });
