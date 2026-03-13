@@ -3,283 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Administrativo</title>
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- Header -->
+    <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Dashboard Admin</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Usuarios</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Ver Usuarios</a></li>
-                            <li><a class="dropdown-item" href="#">Agregar Usuario</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Reportes</a></li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="fas fa-user"></i> Admin
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <span class="navbar-brand mb-0 h1">Dashboard</span>
         </div>
     </nav>
 
-    <!-- Main Layout -->
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-                <div class="position-sticky pt-3">
-                    <h4 class="text-center mb-4">Menú</h4>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#" data-section="1">
-                                <span class="badge bg-primary me-2">1</span> Sección 1
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-section="2">
-                                <span class="badge bg-success me-2">2</span> Sección 2
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-section="3">
-                                <span class="badge bg-warning me-2">3</span> Sección 3
-                            </a>
-                        </li>
-                    </ul>
+            <nav id="sidebar" class="col-md-2 bg-light">
+                <div class="d-flex flex-column align-items-center py-4">
+                    <button class="btn btn-outline-primary mb-3 section-btn" data-section="1">1</button>
+                    <button class="btn btn-outline-primary mb-3 section-btn" data-section="2">2</button>
+                    <button class="btn btn-outline-primary mb-3 section-btn" data-section="3">3</button>
                 </div>
             </nav>
 
             <!-- Main Content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <!-- Header -->
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2" id="main-title">Dashboard Administrativo</h1>
-                    <div class="btn-toolbar">
-                        <button class="btn btn-sm btn-outline-secondary me-2">Exportar</button>
-                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-calendar"></i> Esta semana</button>
-                    </div>
-                </div>
-
-                <!-- Dynamic Content -->
-                <div id="content-area">
-                    <!-- Sección 1 -->
-                    <div id="section-1" class="content-section active">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card text-white bg-primary mb-4">
-                                    <div class="card-body text-center">
-                                        <h2 class="card-title display-1">1</h2>
-                                        <p class="card-text lead">Contenido de la Sección 1</p>
-                                        <p class="card-text">Esta es la primera sección con información importante sobre el dashboard administrativo.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Estadísticas</h5>
-                                        <p class="card-text">Información detallada de la sección 1.</p>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Total usuarios: 1,234</li>
-                                            <li class="list-group-item">Ventas mensuales: $12,345</li>
-                                            <li class="list-group-item">Pedidos pendientes: 56</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Acciones</h5>
-                                        <p class="card-text">Funciones disponibles en esta sección.</p>
-                                        <button class="btn btn-primary w-100 mb-2">Ver Reportes</button>
-                                        <button class="btn btn-secondary w-100">Configurar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sección 2 -->
-                    <div id="section-2" class="content-section">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card text-white bg-success mb-4">
-                                    <div class="card-body text-center">
-                                        <h2 class="card-title display-1">2</h2>
-                                        <p class="card-text lead">Contenido de la Sección 2</p>
-                                        <p class="card-text">Esta es la segunda sección con datos analíticos y métricas avanzadas.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Análisis de Datos</h5>
-                                        <p class="card-text">Gráficos y estadísticas detalladas.</p>
-                                        <div class="row text-center">
-                                            <div class="col-4">
-                                                <div class="p-3 bg-light rounded">
-                                                    <h3 class="text-primary">85%</h3>
-                                                    <small>Eficiencia</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="p-3 bg-light rounded">
-                                                    <h3 class="text-success">92%</h3>
-                                                    <small>Satisfacción</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="p-3 bg-light rounded">
-                                                    <h3 class="text-warning">78%</h3>
-                                                    <small>Crecimiento</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Herramientas</h5>
-                                        <p class="card-text">Utilidades disponibles.</p>
-                                        <button class="btn btn-success w-100 mb-2">Generar Reporte</button>
-                                        <button class="btn btn-info w-100">Exportar Datos</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sección 3 -->
-                    <div id="section-3" class="content-section">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card text-white bg-warning mb-4">
-                                    <div class="card-body text-center">
-                                        <h2 class="card-title display-1">3</h2>
-                                        <p class="card-text lead">Contenido de la Sección 3</p>
-                                        <p class="card-text">Esta es la tercera sección con configuraciones y opciones avanzadas.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Configuraciones</h5>
-                                        <p class="card-text">Ajustes del sistema disponibles.</p>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="notifCheck">
-                                            <label class="form-check-label" for="notifCheck">Notificaciones activas</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="autoSaveCheck">
-                                            <label class="form-check-label" for="autoSaveCheck">Guardado automático</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Sistema</h5>
-                                        <p class="card-text">Información del sistema y mantenimiento.</p>
-                                        <button class="btn btn-warning w-100 mb-2">Actualizar Sistema</button>
-                                        <button class="btn btn-danger w-100">Reiniciar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User Registration Form -->
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header"><h5>Registro de Usuario</h5></div>
-                            <div class="card-body">
-                                <form id="userForm">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="firstName" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" id="firstName" required>
-                                            <div class="valid-feedback">¡Bien!</div>
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <label for="lastName" class="form-label">Apellido</label>
-                                            <input type="text" class="form-control" id="lastName" required>
-                                            <div class="valid-feedback">¡Bien!</div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Correo Electrónico</label>
-                                        <input type="email" class="form-control" id="email" required>
-                                        <div class="valid-feedback">¡Válido!</div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="password" required minlength="6">
-                                        <div class="valid-feedback">¡Segura!</div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                                        <input type="password" class="form-control" id="confirmPassword" required>
-                                        <div class="valid-feedback">¡Coinciden!</div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="terms" required>
-                                            <label class="form-check-label" for="terms">Acepto términos y condiciones</label>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex gap-2 justify-content-end">
-                                        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary" id="submitBtn">Registrar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header"><h5>Acciones Rápidas</h5></div>
-                            <div class="card-body">
-                                <button class="btn btn-success w-100 mb-2" id="exportBtn"><i class="fas fa-download"></i> Exportar</button>
-                                <button class="btn btn-info w-100 mb-2" id="importBtn"><i class="fas fa-upload"></i> Importar</button>
-                                <button class="btn btn-warning w-100 mb-2" id="backupBtn"><i class="fas fa-save"></i> Backup</button>
-                                <button class="btn btn-danger w-100" id="deleteBtn" disabled><i class="fas fa-trash"></i> Eliminar</button>
-                            </div>
-                        </div>
+            <main class="col-md-10">
+                <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+                    <div id="content-display" class="text-center">
+                        <span id="big-number" class="display-1">1</span>
                     </div>
                 </div>
             </main>
