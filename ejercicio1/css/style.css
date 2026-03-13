@@ -41,11 +41,18 @@ main {
     padding: 20px;
 }
 
-#big-number {
+.display-1 {
     font-size: 200px;
     font-weight: bold;
     color: #007bff;
     transition: all 0.3s ease;
+    display: none;
+}
+
+#tab1:checked ~ nav ~ main #content-display #section1,
+#tab2:checked ~ nav ~ main #content-display #section2,
+#tab3:checked ~ nav ~ main #content-display #section3 {
+    display: block;
 }
 
 .display-1 {
